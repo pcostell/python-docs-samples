@@ -21,8 +21,8 @@ before_install:
 - openssl aes-256-cbc -k "$secrets_password" -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 install:
-- pip install tox coverage
+- pip install nox-automation coverage
 script:
 - source ${TRAVIS_BUILD_DIR}/testing/resources/test-env.sh
-- tox
+- nox -s lint py27 py34
 - coverage report
